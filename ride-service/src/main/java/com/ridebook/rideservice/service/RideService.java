@@ -24,7 +24,7 @@ public class RideService {
     private final RideRepository rideRepository;
     private final KafkaTemplate<String, RideRequestedEvent> kafkaTemplate;
 
-    private static final String RIDE_REQUESTED_TOPIC = "ride-requested";
+    private static final String RIDE_REQUESTED_TOPIC = "ride.requested";
 
     //Create ride in DB with Ride_requested....
     public RideResponse requestRide(RideRequest request){
@@ -119,7 +119,7 @@ public class RideService {
         return mapToResponse(ride);
     }
 
-    public List<RideResponse> getRidesByRiderId(String riderId){
+    public List<RideResponse> getRidesByRider(String riderId){
         return rideRepository.findByRiderIdOrderByCreatedAtDesc(riderId)
                 .stream()
                 .map(this::mapToResponse)
