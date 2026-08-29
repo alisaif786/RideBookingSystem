@@ -11,7 +11,7 @@ import java.util.List;
 @FeignClient(name = "location-service", url = "${location.service.url}")
 public interface LocationServiceClient {
 
-    @GetMapping("/api/v1/location/drivers/nearby")
+    @GetMapping("/api/v1/locations/drivers/nearby")
     List<NearByDriverResponse> getNearByDrivers(
             @RequestParam double latitude,
             @RequestParam double longitude,
